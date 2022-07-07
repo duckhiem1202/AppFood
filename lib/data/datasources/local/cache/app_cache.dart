@@ -4,7 +4,9 @@ class AppCache {
   static SharedPreferences? _prefs;
 
   static Future<SharedPreferences> init() async {
-    _prefs ??= await SharedPreferences.getInstance();
+    if (_prefs == null) {
+      _prefs = await SharedPreferences.getInstance();
+    }
     return _prefs!;
   }
 

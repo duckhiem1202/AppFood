@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
-import 'package:myappappsa/commons/constants/api_constant.dart';
-
+import '../../common/constants/api_constant.dart';
 import '../datasources/remote/app_response.dart';
 import '../datasources/remote/dio_request.dart';
 import '../datasources/remote/product_response.dart';

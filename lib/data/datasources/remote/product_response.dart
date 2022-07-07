@@ -8,15 +8,16 @@
 /// date_created : "2022-03-13T09:00:30.888Z"
 /// date_updated : null
 /// __v : 0
+
 class ProductResponse {
   ProductResponse(
       {String? id,
-        String? name,
-        String? address,
-        int? price,
-        String? img,
-        int? quantity,
-        List<String>? gallery}) {
+      String? name,
+      String? address,
+      int? price,
+      String? img,
+      int? quantity,
+      List<String>? gallery}) {
     _id = id;
     _name = name;
     _address = address;

@@ -1,39 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:myappappsa/data/datasources/local/cache/app_cache.dart';
-import 'package:myappappsa/presentations/features/cart/cart_page.dart';
-import 'package:myappappsa/presentations/features/home/home_page.dart';
-import 'package:myappappsa/presentations/features/sign_in/sign_in_page.dart';
-import 'package:myappappsa/presentations/features/sign_up/sign_up_page.dart';
-import 'package:myappappsa/presentations/features/splash/splasd_page.dart';
-
-void main() {
-
-  runApp(const MyApp());
-
+import '../../../data/datasources/local/cache/app_cache.dart';
+import '../../../presentation/features/cart/cart_page.dart';
+import '../../../presentation/features/home/home_page.dart';
+import '../../../presentation/features/order_history/order_history_page.dart';
+import '../../../presentation/features/sign_in/sign_in_page.dart';
+import '../../../presentation/features/sign_up/sign_up_page.dart';
+import '../../../presentation/features/splash/splash_page.dart';
+void main() async {
+  runApp(MyApp());
+  await AppCache.init();
 }
-
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo abc',
+      title: 'Flutter Demo',
       theme: ThemeData(
-
+        fontFamily: "QuickSan",
         primarySwatch: Colors.blue,
       ),
       routes: {
-        "/sign-in": (context) => const SignInPage(),
-        "/sign-up": (context) => const SignUpPage(),
-        "/home": (context) => const HomePage(),
-        "/": (context) =>  const SplashPage(),
-        "/cart": (context) => const CartPage(),
+        "/sign-in": (context) => SignInPage(),
+        "/sign-up": (context) => SignUpPage(),
+        "/home": (context) => HomePage(),
+        "/cart": (context) => CartPage(),
+        "/order-history": (context) => OrderHistoryPage(),
+        "/": (context) => SplashPage(),
       },
       initialRoute: "/",
     );
   }
 }
-

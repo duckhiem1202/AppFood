@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:myappappsa/commons/constants/api_constant.dart';
-import 'package:myappappsa/commons/constants/variable_constant.dart';
+import 'package:myappappsa/common/constants/api_constant.dart';
+import 'package:myappappsa/common/constants/variable_constant.dart';
 import 'package:myappappsa/data/datasources/local/cache/app_cache.dart';
+
 
 class DioRequest {
   Dio? _dio;
   static BaseOptions _options = new BaseOptions(
     baseUrl: ApiConstant.BASE_URL,
-    connectTimeout: 5000,
-    receiveTimeout: 3000,
+    connectTimeout: 30000,
+    receiveTimeout: 30000,
   );
 
   static final DioRequest instance = DioRequest._internal();
@@ -19,7 +20,7 @@ class DioRequest {
       _dio!.interceptors.add(LogInterceptor(requestBody: true));
       _dio!.interceptors.add(InterceptorsWrapper(
         onRequest: (options, handler) {
-          var token =  AppCache.getString(VariableConstant.TOKEN);
+          var token = AppCache.getString(VariableConstant.TOKEN);
           if (token.isNotEmpty) {
             options.headers["Authorization"] = "Bearer " + token;
           }
